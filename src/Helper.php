@@ -45,17 +45,16 @@ class Helper extends PatternDataHelper {
               PatternData::setPatternOption($patternStoreKey, 'patternRaw', $tag->getDescription());
             }
           }
-          $desc = "";
           if (!empty($docblock->getSummary())) {
-            $desc = '# ' .  $docblock->getSummary() . "\n";
             PatternData::setPatternOption($patternStoreKey, 'nameClean', $docblock->getSummary());
           }
           if (!empty($docblock->getDescription())) {
-            $desc .= $docblock->getDescription()->render();
-            $desc = $parser->parse($desc);
+            $desc = $parser->parse($docblock->getDescription()->render());
             PatternData::setPatternOption($patternStoreKey, 'desc', $desc);
             PatternData::setPatternOption($patternStoreKey, 'descExists', 1);
           }
+
+          PatternData::setPatternOptionArray($patternStoreKey, "extraOutput", ['help' => 'me'], "patternLabPluginKSS");
         }
       }
     }
