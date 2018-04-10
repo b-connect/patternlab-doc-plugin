@@ -18,8 +18,8 @@
     "source":         "https://github.com/pattern-lab/plugin-php-reload/releases"
   },
   "autoload": {
-    "psr-0": {
-      "PatternLab\\TwigDocListener": "src/"
+    "psr-4": {
+      "bconnect\\twigdoc\\": "src/"
     }
   },
   "require": {
