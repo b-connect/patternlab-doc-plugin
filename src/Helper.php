@@ -32,6 +32,8 @@ class Helper extends PatternDataHelper {
 		$patternLoaderClass      = $patternEngineBasePath."\Loaders\PatternLoader";
     $patternLoader           = new $patternLoaderClass($options);
 
+    $parser = new \cebe\markdown\GithubMarkdown();
+
     foreach ($patternDataStore as $patternStoreKey => $patternStoreData)  {
       if (isset($patternStoreData['patternRaw'])) {
         $matches = [];
@@ -42,6 +44,17 @@ class Helper extends PatternDataHelper {
             if ($tag->getName() === 'example') {
               PatternData::setPatternOption($patternStoreKey, 'patternRaw', $tag->getDescription());
             }
+          }
+          $desc = "";
+          if (!empty($docblock->getSummary())) {
+            $desc = '# ' .  $docblock->getSummary() . "\n";
+            PatternData::setPatternOption($patternStoreKey, 'nameClean', $docblock->getSummary());
+          }
+          if (!empty($docblock->getDescription())) {
+            $desc .= $docblock->getDescription()->render();
+            $desc = $parser->parse($desc);
+            PatternData::setPatternOption($patternStoreKey, 'desc', $desc);
+            PatternData::setPatternOption($patternStoreKey, 'descExists', 1);
           }
         }
       }
