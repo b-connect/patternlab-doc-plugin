@@ -8,7 +8,7 @@ use \PatternLab\PatternData;
 use \PatternLab\PatternEngine\Twig\TwigUtil;
 use \PatternLab\PatternData\Event;
 
-class TwigDocListener extends \PatternLab\Listener {
+class PatternLabListener extends \PatternLab\Listener {
 
   /**
   * Add the listeners for this plug-in
