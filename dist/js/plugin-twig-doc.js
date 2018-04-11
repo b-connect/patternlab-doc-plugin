@@ -1,7 +1,10 @@
-function modifyPanels() {
-  var panelsNew;
-  panelsNew = Panels.panels.splice(1,1);
-  panelsNew[0].default = true;
-  Panels.panels = panelsNew;
+var TwigDocPlugin = {
+
+	insert: function(patternData) {
+
+		console.log("trying to insert");
+		console.log(patternData.extraOutput.patternLabPluginKSS);
+
+	}
+
 }
-alert('LOADED');
