@@ -1,4 +1,19 @@
 table.variables {
-  background-color: antiquewhite;
-  color: black;
+
+}
+
+table.variables tbody tr th {
+  padding: 1em;
+}
+
+table.variables tbody tr {
+  border-top: 1px solid cadetblue;
+}
+
+table.variables tbody tr:nth-child(odd) {
+  background-color: floralwhite;
+}
+
+table.variables tbody tr:nth-child(even) {
+
 }
