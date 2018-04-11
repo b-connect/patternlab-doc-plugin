@@ -52,7 +52,8 @@ class Helper extends PatternDataHelper {
             PatternData::setPatternOption($patternStoreKey, 'desc', $desc);
             PatternData::setPatternOption($patternStoreKey, 'descExists', 1);
           }
-        }
+
+          PatternData::setPatternOption($patternStoreKey, 'test', ['help' => 'me']);
         PatternData::setPatternOptionArray($patternStoreKey, "extraOutput", ['helpMe' => 'helper'], "patternLabPluginTwigDoc");
       }
     }
