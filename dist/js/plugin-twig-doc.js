@@ -2,7 +2,8 @@
 var TwigDocPlugin = {
 
 	insert: function(panels, patternData, iframePassback, switchText) {
-    $(panels).find('#sg-atoms-colors-pl-panel-variables-panel').html('HERE');
+    console.log(panels);
+    $(panels).find('#sg-atoms-colors-pl-panel-variables-panel').append('<pre class="language-markup"><table border=1><tr><td>HERE</td><td>HERE</td></tr></table></pre>');
   },
 
 }
