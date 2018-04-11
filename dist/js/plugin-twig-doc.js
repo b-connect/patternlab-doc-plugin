@@ -1,3 +1,4 @@
+
 var TwigDocPlugin = {
 
 	insert: function(patternData) {
