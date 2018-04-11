@@ -33,8 +33,6 @@ class Helper extends PatternDataHelper {
 
     $parser = new \cebe\markdown\GithubMarkdown();
 
-    print_r($storeData);
-
     foreach ($patternDataStore as $patternStoreKey => $patternStoreData)  {
       if (isset($patternStoreData['patternRaw'])) {
         $matches = [];
