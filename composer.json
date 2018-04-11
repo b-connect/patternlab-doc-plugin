@@ -31,6 +31,7 @@
   },
   "extra": {
     "patternlab": {
+      "templateExtension": "twig",
       "dist": {
         "componentDir": [
           { "*": "*" }
