@@ -16,13 +16,12 @@ class Helper extends PatternDataHelper {
   const REG_EX_COMMENT = '/^{#(.*)#}/s';
 
 	public function __construct($options = array()) {
-		parent::__construct($options);
+    parent::__construct($options);
 		$this->patternPaths    = $options["patternPaths"];
-  }
+		$this->varsTemplate    = file_get_contents(__DIR__."/Views/variables.twig");
+	}
 
   public function run() {
-
-    // various set-up options
     $storeData               = Data::get();
 		$options                 = array();
 		$options["patternPaths"] = $this->patternPaths;
@@ -53,8 +52,6 @@ class Helper extends PatternDataHelper {
             PatternData::setPatternOption($patternStoreKey, 'desc', $desc);
             PatternData::setPatternOption($patternStoreKey, 'descExists', 1);
           }
-
-          PatternData::setPatternOptionArray($patternStoreKey, "extraOutput", ['help' => 'me'], "patternLabPluginKSS");
         }
       }
     }
