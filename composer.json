@@ -38,7 +38,7 @@
         ]
       },
       "onready": "",
-      "callback": "Dispatcher.addListener('codePanelRenderDone', TwigDocPlugin.insert);Dispatcher.addListener('setupPanels', TwigDocPlugin.setup);",
+      "callback": "Dispatcher.addListener('codePanelRenderDone', TwigDocPlugin.insert);",
       "config": {
         "plugins": {
           "twigdoc": {
