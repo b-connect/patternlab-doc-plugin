@@ -33,6 +33,8 @@ class Helper extends PatternDataHelper {
 
     $parser = new \cebe\markdown\GithubMarkdown();
 
+    print_r($storeData);
+
     foreach ($patternDataStore as $patternStoreKey => $patternStoreData)  {
       if (isset($patternStoreData['patternRaw'])) {
         $matches = [];
@@ -47,15 +49,34 @@ class Helper extends PatternDataHelper {
           if (!empty($docblock->getSummary())) {
             PatternData::setPatternOption($patternStoreKey, 'nameClean', $docblock->getSummary());
           }
+          $desc = "";
           if (!empty($docblock->getDescription())) {
             $desc = $parser->parse($docblock->getDescription()->render());
+          }
+          $variables = [];
+
+          foreach ( $docblock->getTags() as $value) {
+            if ( is_a($value, 'phpDocumentor\Reflection\DocBlock\Tags\Param')) {
+              $variables[$value->getVariableName()] = [
+                'type' => $value->getType() . "",
+                'desc' => $value->getDescription()->render()
+              ];
+            }
+          }
+          if (count($variables)) {
+            $desc .= '<table style="width: 100%" class="variables"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>';
+            foreach ($variables as $name => $info) {
+              $desc .= '<tr><td>' . $name . '</td><td>' . $info['type'] . '</td><td>' . $info['desc'] . '</td></tr>';
+            }
+            $desc .= '</tbody></table>';
+          }
+
+          if (!empty($desc)) {
             PatternData::setPatternOption($patternStoreKey, 'desc', $desc);
             PatternData::setPatternOption($patternStoreKey, 'descExists', 1);
           }
 
         }
-        PatternData::setPatternOption($patternStoreKey, 'test', ['help' => 'me']);
-        PatternData::setPatternOptionArray($patternStoreKey, "extraOutput", ['helpMe' => 'helper'], "patternLabPluginTwigDoc");
       }
     }
   }

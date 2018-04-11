@@ -2,12 +2,14 @@
 var TwigDocPlugin = {
 
 	insert: function(panels, patternData, iframePassback, switchText) {
-    console.log(panels);
-    $(panels).find('#sg-atoms-colors-pl-panel-variables-panel').append('<pre class="language-markup"><table border=1><tr><td>HERE</td><td>HERE</td></tr></table></pre>');
+    // console.log(panels);
+    var id = '#sg-' + patternData + '-pl-panel-variables-panel'
+    $(panels).find(id).html('<pre class="language-markup"></pre>');
+    var table = $(panels).find('table.variables').remove();
+    $(panels).find(id).find('pre').append(table);
   },
 
 }
-
 Panels.add({
 	'id': 'pl-panel-variables',
 	'name': 'Variables',

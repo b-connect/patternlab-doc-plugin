@@ -22,4 +22,5 @@ class TwigDocListener extends \PatternLab\Listener {
     $helper = new Helper($event->getOptions());
     $helper->run();
   }
+
 }
