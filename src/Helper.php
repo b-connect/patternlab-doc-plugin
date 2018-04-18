@@ -69,6 +69,23 @@ class Helper extends PatternDataHelper {
             $desc .= '</tbody></table>';
           }
 
+          $links = [];
+          foreach ( $docblock->getTags() as $value) {
+            if ( is_a($value, 'phpDocumentor\Reflection\DocBlock\Tags\See')) {
+              $variables[$value->getVariableName()] = [
+                'link' => $value->getReference() . "",
+                'desc' => $value->getDescription()->render()
+              ];
+            }
+          }
+          if (count($links)) {
+            $desc .= '<ul class="links">';
+            foreach ($links as $link) {
+              $desc .= '<li><a href="'. $link['link'].'" target="_blank">'.$link['doc'].'</a></li>';
+            }
+            $desc .= '</ul>';
+          }
+
           if (!empty($desc)) {
             PatternData::setPatternOption($patternStoreKey, 'desc', $desc);
             PatternData::setPatternOption($patternStoreKey, 'descExists', 1);
