@@ -70,11 +70,11 @@ class Helper extends PatternDataHelper {
           }
 
           $links = [];
-          foreach ( $docblock->getTags() as $value) {
+          foreach ( $docblock->getTags() as $value ) {
             if ( is_a($value, 'phpDocumentor\Reflection\DocBlock\Tags\See')) {
               $links[] = [
                 'link' => $value->getReference() . "",
-                'desc' => $value->getDescription()->render()
+                'desc' => ($value->getDescription() !== null) ? $value->getDescription()->render() : $value->getReference() . ""
               ];
             }
           }
