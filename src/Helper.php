@@ -18,7 +18,7 @@ class Helper extends PatternDataHelper {
 	public function __construct($options = array()) {
     parent::__construct($options);
 		$this->patternPaths    = $options["patternPaths"];
-		$this->varsTemplate    = file_get_contents(__DIR__."/Views/variables.twig");
+		// $this->varsTemplate    = file_get_contents(__DIR__."/Views/variables.twig");
 	}
 
   public function run() {
@@ -81,7 +81,7 @@ class Helper extends PatternDataHelper {
           if (count($links)) {
             $desc .= '<ul class="links">';
             foreach ($links as $link) {
-              $desc .= '<li><a href="'. $link['link'].'" target="_blank">'.$link['doc'].'</a></li>';
+              $desc .= '<li><a href="'. $link['link'].'" target="_blank">'.$link['desc'].'</a></li>';
             }
             $desc .= '</ul>';
           }
