@@ -12,6 +12,9 @@ var TwigDocPlugin = {
     $(panels).find(id).html('<pre class="language-markup"></pre>');
     var table = $(panels).find('ul.link').remove();
     $(panels).find(id).find('pre').append(table);
+    if (table.length === 0) {
+      $(panels).find(id).find('pre').html('');
+    }
   },
 
 }

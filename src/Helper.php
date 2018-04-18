@@ -72,7 +72,7 @@ class Helper extends PatternDataHelper {
           $links = [];
           foreach ( $docblock->getTags() as $value) {
             if ( is_a($value, 'phpDocumentor\Reflection\DocBlock\Tags\See')) {
-              $variables[$value->getVariableName()] = [
+              $links[$value->getVariableName()] = [
                 'link' => $value->getReference() . "",
                 'desc' => $value->getDescription()->render()
               ];
